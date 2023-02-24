@@ -21,12 +21,18 @@ function App() {
     dataLength={fotos.length} 
     hasMore={true} 
     next={() => setPagina ((paginaPrev) => paginaPrev + 1)}>
-      <div className='container'>
-        <div className='container-img'>
-          {fotos.map(foto=>(
-          <div key={foto.id}>
-            <img src={foto.urls.small} alt=''/>
-          </div>))}
+      <div >
+        <form action="">
+          <input type="text" placeholder='Buscar'/>
+          <i class="bi bi-search"></i>
+        </form>
+        <div>
+          <div>
+            {fotos.map(foto=>(
+            <div key={foto.id}>
+              <img src={foto.urls.small} alt=''/>
+            </div>))}
+          </div>
         </div>
       </div>
   </InfiniteScroll>
