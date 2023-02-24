@@ -24,15 +24,13 @@ function App() {
       <div >
         <form action="">
           <input type="text" placeholder='Buscar'/>
-          <i class="bi bi-search"></i>
+          <i className="bi bi-search lupa"></i>
         </form>
         <div>
-          <div>
-            {fotos.map(foto=>(
-            <div key={foto.id}>
-              <img src={foto.urls.small} alt=''/>
-            </div>))}
-          </div>
+          {fotos.map(foto=>(
+          <div key={foto.id}>
+            <img src={foto.urls.small} alt=''/>
+          </div>))}
         </div>
       </div>
   </InfiniteScroll>
