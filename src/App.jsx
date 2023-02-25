@@ -2,6 +2,7 @@ import './App.css';
 import axios from 'axios'
 import {useEffect, useState} from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
+import { buscador } from './components/index';
 
 function App() {
 
@@ -16,14 +17,15 @@ function App() {
 /*     console.log(fotos.map(foto=>(foto.urls.small))) */
 /*       console.log(fotos) */
 },[pagina]);
+
   return (
   <InfiniteScroll 
     dataLength={fotos.length} 
     hasMore={true} 
     next={() => setPagina ((paginaPrev) => paginaPrev + 1)}>
-      <div >
-        <form action="">
-          <input type="text" placeholder='Buscar'/>
+      <div className='container'>
+        <form action="" className='cont-buscador'>
+          <input type="text" placeholder='Buscar' className='buscador'/>
           <i className="bi bi-search lupa"></i>
         </form>
         <div>
