@@ -1,7 +1,7 @@
 import React from 'react'
-import './buscador.css';
+import './Buscador.css';
 
-const buscador = () => {
+const Buscador = () => {
   return (
     <form action="" className='cont-buscador'>
         <input type="text" placeholder='Buscar' className='buscador'/>
@@ -10,4 +10,4 @@ const buscador = () => {
   )
 }
 
-export {buscador}
+export {Buscador}

@@ -1,1 +1,1 @@
-export {buscador} from './buscador/buscador'
+export {Buscador} from './Buscador/Buscador'

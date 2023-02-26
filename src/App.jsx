@@ -2,7 +2,7 @@ import './App.css';
 import axios from 'axios'
 import {useEffect, useState} from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import { buscador } from './components/index';
+import {Buscador} from './components';
 
 function App() {
 
@@ -15,7 +15,7 @@ function App() {
       setFotos((paginaPrev) => paginaPrev.concat(response.data))}
     obtenerfotos()
 /*     console.log(fotos.map(foto=>(foto.urls.small))) */
-/*       console.log(fotos) */
+       
 },[pagina]);
 
   return (
@@ -24,15 +24,13 @@ function App() {
     hasMore={true} 
     next={() => setPagina ((paginaPrev) => paginaPrev + 1)}>
       <div className='container'>
-        <form action="" className='cont-buscador'>
-          <input type="text" placeholder='Buscar' className='buscador'/>
-          <i className="bi bi-search lupa"></i>
-        </form>
-        <div>
+        <Buscador/>
+        <div className='row'>
           {fotos.map(foto=>(
-          <div key={foto.id}>
+          <div key={foto.id} className="col-4">
             <img src={foto.urls.small} alt=''/>
-          </div>))}
+          </div>
+          ))}
         </div>
       </div>
   </InfiniteScroll>
