@@ -1,1 +1,0 @@
-export {Buscador} from './Buscador/Buscador'

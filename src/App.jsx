@@ -6,7 +6,7 @@ function App() {
 
   const [fotos,setFotos]=useState([])
   const [pagina,setPagina]=useState(1)
-
+  const [busqueda,setBusqueda]=useState("")
 
   useEffect(() => {
     const obtenerfotos=async ()=>{
@@ -41,10 +41,29 @@ function App() {
 
   const fotosFiltradas= fotos.filter(fotosFilt)
 
+
+         /*   BUSCADOR */
+  const buscador = (e) => {
+    setBusqueda(e.target.value)
+  }
+  const resultado= !busqueda ? fotosFiltradas : fotosFiltradas.filter((foto)=> 
+  foto.description.toLowerCase().includes(busqueda.toLocaleLowerCase())
+  || foto.user.locationtoLowerCase().includes(busqueda.toLocaleLowerCase()))
+
+
   return (
+    <div className='fondo'>
       <div className='container'>
         <div className='cont-busca'>
-          <Buscador/>
+        <form action="" className='cont-buscador shadow p-3 mb-5 bg-body-tertiary rounded'>
+          <input 
+          value={busqueda} 
+          type="text" 
+          placeholder='Buscar' 
+          className='buscador'
+          onChange={buscador}/>
+          <i className="bi bi-search lupa"></i>
+        </form>
         </div> 
         <div className='row justify-content-around'>
           {fotosFiltradas && fotosFiltradas.map(foto=>(
@@ -60,6 +79,7 @@ function App() {
           </div>))}
         </div>
       </div>
+    </div>
   );
 }
 
