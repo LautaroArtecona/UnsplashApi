@@ -1,6 +1,5 @@
 import './App.css';
 import {useEffect, useState} from 'react'
-import {Buscador} from './components';
 
 function App() {
 
@@ -48,7 +47,7 @@ function App() {
   }
   const resultado= !busqueda ? fotosFiltradas : fotosFiltradas.filter((foto)=> 
   foto.description.toLowerCase().includes(busqueda.toLocaleLowerCase())
-  || foto.user.locationtoLowerCase().includes(busqueda.toLocaleLowerCase()))
+  || foto.user.location.toLowerCase().includes(busqueda.toLocaleLowerCase()))
 
 
   return (
@@ -66,13 +65,17 @@ function App() {
         </form>
         </div> 
         <div className='row justify-content-around'>
-          {fotosFiltradas && fotosFiltradas.map(foto=>(
-          <div className='card col-sm-3 cont-tarj' key={foto.id} /* style="width: 18rem;" */ >
-              <img src={foto.urls.small} className='card-img-top fotos' alt="" />
+          {/* fotosFiltradas && fotosFiltradas */resultado.map(foto=>(
+          <div className='card col-sm-3 cont-tarj' key={foto.id} >
+              <a href={foto.links.html} target='_blank'>
+                <img src={foto.urls.small} className='card-img-top fotos' alt="foto"/>
+              </a>
               <div className='card-body tarjeta'>
-                <h5 className='card-title descrip'><strong>Descripcion:</strong> {fotos.description!=null ? fotos.description : foto.alt_description}</h5>
+                <h6 className='card-title descrip'><strong>Descripcion:</strong> {fotos.description!=null ? fotos.description : foto.alt_description}</h6>
                 <div>
-                  <p className='card-text username'><strong>Usuario:</strong> {foto.user.username}</p>
+                  <a href={foto.user.links.html} target='_blank' className='card-text username'>
+                    <strong >Usuario:</strong> @{foto.user.username}
+                  </a>
                   <p className='card-text location'><strong>Ubicacion:</strong> {foto.user.location}</p>
                 </div>
               </div>
